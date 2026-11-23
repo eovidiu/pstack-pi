@@ -1,0 +1,41 @@
+{
+  "name": "pstack-pi",
+  "version": "0.15.46-pi.1",
+  "description": "poteto's pstack (cursor/plugins) for the pi coding agent: rigorous agent workflows, principles, and Cursor-compatible Task, AskQuestion, and TodoWrite tools.",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pstack",
+    "poteto-mode",
+    "skills",
+    "subagents",
+    "workflow"
+  ],
+  "homepage": "https://github.com/cursor/plugins/tree/main/pstack",
+  "files": [
+    "extensions",
+    "skills",
+    "agents",
+    "docs",
+    "scripts",
+    "upstream.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "sync": "node scripts/sync-upstream.mjs",
+    "check": "node scripts/sync-upstream.mjs --check",
+    "test": "node --experimental-strip-types --test test/*.test.ts"
+  },
+  "pi": {
+    "extensions": ["./extensions/pstack/index.ts"],
+    "skills": ["./skills"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "typebox": "*"
+  }
+}
