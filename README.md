@@ -1,5 +1,7 @@
 # pstack for pi
 
+> An unofficial pi port of **[pstack](https://github.com/cursor/plugins/tree/main/pstack)** by [Lauren Tan (poteto)](https://x.com/poteto), from Cursor's [`cursor/plugins`](https://github.com/cursor/plugins). All skills, playbooks, principles, and the guide are upstream's work. This repository adds only the pi extension and adapter. Report skill issues and send skill improvements [upstream](https://github.com/cursor/plugins/tree/main/pstack). Report pi-specific issues [here](https://github.com/eovidiu/pstack-pi/issues).
+
 A [pi](https://pi.dev) package of [pstack](https://github.com/cursor/plugins/tree/main/pstack), poteto's agent workflows from `cursor/plugins`: `poteto-mode` and its 22 playbooks, 24 principle skills, and situational skills such as `swarm`, `arena`, `interrogate`, `why`, `how`, `tdd`, and `unslop`.
 
 The skills are upstream's, unchanged except for one line that points them at the pi adapter. pstack is written against Cursor's tools, so this package adds the pieces pi lacks.
@@ -80,6 +82,11 @@ extensions/pstack/   the pi extension (hand-written)
 docs/harness/pi.md   the adapter (hand-written)
 skills/ agents/ docs/guide/   generated from upstream
 ```
+
+## Upstream
+
+- Source: [cursor/plugins/pstack](https://github.com/cursor/plugins/tree/main/pstack). Its [README](https://github.com/cursor/plugins/blob/main/pstack/README.md) describes every skill and playbook.
+- Version in this package: [`upstream.json`](upstream.json) records the upstream version and commit the generated files come from.
 
 ## License
 
