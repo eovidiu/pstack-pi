@@ -82,7 +82,9 @@ export default function pstack(pi: ExtensionAPI) {
 	// ------------------------------------------------------------ system prompt
 
 	pi.on("before_agent_start", (event, ctx) => {
-		const sections = event.systemPromptOptions.sections;
+		// pi exposes named prompt sections; omp passes `systemPrompt` (string[]) and takes a replacement back.
+		const piSections = event.systemPromptOptions?.sections;
+		const sections: Record<string, string> = piSections ?? {};
 		const sessionFile = ctx.sessionManager.getSessionFile();
 		const sessionDir = ctx.sessionManager.getSessionDir();
 		const lines = [
@@ -107,6 +109,12 @@ export default function pstack(pi: ExtensionAPI) {
 		} else {
 			delete sections.pstack_mode;
 		}
+
+		if (piSections || !("systemPrompt" in event)) return;
+		const base = event.systemPrompt;
+		const extra = Object.values(sections);
+		if (Array.isArray(base)) return { systemPrompt: [...base, ...extra] };
+		return { systemPrompt: [typeof base === "string" ? base : "", ...extra].filter(Boolean).join("\n\n") };
 	});
 
 	// ------------------------------------------------------------ commands
